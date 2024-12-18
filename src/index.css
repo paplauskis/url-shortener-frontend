@@ -73,6 +73,7 @@ h1 {
 
 .data-table tr:hover {
   background-color: black;
+  cursor: pointer;
 }
 
 .form-div {
