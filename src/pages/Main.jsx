@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import UrlResult from '../components/UrlResult.jsx'
+import CreateUrl from '../components/CreateUrl.jsx'
 
 function Main() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [formShow, setFormShow] = useState(false);
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + '/')
@@ -38,6 +40,8 @@ function Main() {
 
   return (
     <>
+      {!formShow && <button onClick={() => setFormShow(true)}>Add New URL</button>}
+      {formShow && <CreateUrl/>}
       <h2>Your URLs</h2>
       <table className="data-table">
         <thead>
