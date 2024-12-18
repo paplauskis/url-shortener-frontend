@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react'
 import UrlResult from '../components/UrlResult.jsx'
 import CreateUrl from '../components/CreateUrl.jsx'
+import { useNavigate } from 'react-router-dom'
 
 function Main() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [formShow, setFormShow] = useState(false);
+  const navigate = useNavigate();
 
+  const handleRedirect = (id) => {
+    navigate(`/url/${id}`);
+  };
+  
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + '/')
       .then((response) => {
@@ -55,15 +61,15 @@ function Main() {
         </thead>
         <tbody>
         {data.map((item) => (
-          <tr key={item.id}>
-            <UrlResult
-              originalUrl={item.originalUrl}
-              shortenedUrl={item.shortenedUrl}
-              clickCount={item.clickCount}
-              createdAt={item.createdAt}
-              updatedAt={item.updatedAt}
-            />
-          </tr>
+            <tr key={item.id} onClick={() => handleRedirect(item.id)}>
+              <UrlResult
+                originalUrl={item.originalUrl}
+                shortenedUrl={item.shortenedUrl}
+                clickCount={item.clickCount}
+                createdAt={item.createdAt}
+                updatedAt={item.updatedAt}
+              />
+            </tr>
         ))}
         </tbody>
       </table>
