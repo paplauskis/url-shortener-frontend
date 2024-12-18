@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import UrlDataResult from '../components/UrlDataResult.jsx'
 
@@ -7,6 +7,27 @@ function Url() {
   const [urlObject, setUrlObject] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  
+  const handleDeleteUrl = async (e, id) => {
+    e.preventDefault();
+
+    try {
+      await fetch(
+        `${import.meta.env.VITE_API_URL}/url/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      navigate('/')
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/url/${id}`)
@@ -38,6 +59,7 @@ function Url() {
   return (
     <>
       <h2>Showing request data for URL: {urlObject.shortenedUrl} --> {urlObject.originalUrl}</h2>
+      <button onClick={(e) => handleDeleteUrl(e, urlObject.id)}>Delete This URL</button>
       <table className="data-table">
         <thead>
         <tr>
