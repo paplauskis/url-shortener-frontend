@@ -71,10 +71,6 @@ h1 {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.data-table tr:nth-child(odd) {
-  /*background-color: rgba(0, 0, 0, 0.4);*/
-}
-
 .data-table tr:hover {
   background-color: black;
 }
