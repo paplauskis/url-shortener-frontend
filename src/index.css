@@ -75,6 +75,18 @@ h1 {
   background-color: black;
 }
 
+.form-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+}
+
+.create-url {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
