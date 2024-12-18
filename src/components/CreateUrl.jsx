@@ -17,7 +17,7 @@ function CreateUrl() {
         }
       );
       
-      setOriginalUrl('')
+      window.location.reload()
     } catch (err) {
       console.error(err);
     }
