@@ -1,13 +1,16 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import './App.css'
+import Url from './pages/Url.jsx'
+import Main from './pages/Main.jsx'
+import Stats from './pages/Stats.jsx'
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={} />
-      <Route path="/url" element={} />
-      <Route path="/stats" element={} />
+      <Route path="/" Component={Main} />
+      <Route path="/url" Component={Url} />
+      <Route path="/stats" Component={Stats} />
     </Routes>
   )
 }
