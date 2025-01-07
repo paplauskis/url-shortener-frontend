@@ -8,10 +8,11 @@ function Url() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
   
   const handleDeleteUrl = async (e, id) => {
     e.preventDefault();
-
+    
     try {
       await fetch(
         `${import.meta.env.VITE_API_URL}/url/${id}`,
@@ -19,6 +20,7 @@ function Url() {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
           },
         }
       );
@@ -30,7 +32,14 @@ function Url() {
   }
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/url/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/url/${id}`,
+      {
+        method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error('Server error');
@@ -58,7 +67,7 @@ function Url() {
   
   return (
     <>
-      <h2>Showing request data for URL: {urlObject.shortenedUrl} --> {urlObject.originalUrl}</h2>
+      <h2>Showing request data for URL: {urlObject.shortenedUrl} -------- {urlObject.originalUrl}</h2>
       <button onClick={(e) => handleDeleteUrl(e, urlObject.id)}>Delete This URL</button>
       <table className="data-table">
         <thead>
