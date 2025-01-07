@@ -71,7 +71,7 @@ function Main() {
         {data.map((item) => (
             <tr key={item.id} onClick={() => handleRedirect(item.id)}>
               <UrlResult
-                originalUrl={item.originalUrl}
+                originalUrl={decodeURIComponent(item.originalUrl)}
                 shortenedUrl={item.shortenedUrl}
                 clickCount={item.clickCount}
                 createdAt={item.createdAt}
