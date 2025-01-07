@@ -67,7 +67,7 @@ function Url() {
   
   return (
     <>
-      <h2>Showing request data for URL: {urlObject.shortenedUrl} -------- {urlObject.originalUrl}</h2>
+      <h2>Showing request data for URL: {urlObject.shortenedUrl} -------- {decodeURIComponent(urlObject.originalUrl)}</h2>
       <button onClick={(e) => handleDeleteUrl(e, urlObject.id)}>Delete This URL</button>
       <table className="data-table">
         <thead>
