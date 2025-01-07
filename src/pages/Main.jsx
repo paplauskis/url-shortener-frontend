@@ -9,13 +9,21 @@ function Main() {
   const [loading, setLoading] = useState(true);
   const [formShow, setFormShow] = useState(false);
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   const handleRedirect = (id) => {
     navigate(`/url/${id}`);
   };
   
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + '/')
+    fetch(import.meta.env.VITE_API_URL + '/',
+      {
+        method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+      }
+    )
       .then((response) => {
         console.log('Fetching from:', import.meta.env.API_URL + '/');
         console.log(response)
