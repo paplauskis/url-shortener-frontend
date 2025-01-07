@@ -27,6 +27,8 @@ function Login() {
         const data = await response.json();
         localStorage.setItem('token', data.accessToken);
         window.location.replace('/')
+      } else {
+        setError("incorrect login credentials")
       }
       
     } catch (err) {
@@ -59,9 +61,7 @@ function Login() {
             required
           />
         </div>
-
         {error && <p style={{ color: 'red' }}>{error}</p>}
-
         <button type="submit">Login</button>
       </form>
     </div>
