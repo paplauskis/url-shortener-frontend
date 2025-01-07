@@ -2,7 +2,8 @@ import { useState } from 'react'
 
 function CreateUrl() {
   const [originalUrl, setOriginalUrl] = useState('');
-  
+  const token = localStorage.getItem('token');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -13,6 +14,7 @@ function CreateUrl() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
           },
         }
       );
