@@ -4,7 +4,7 @@ import './App.css'
 import Url from './pages/Url.jsx'
 import Main from './pages/Main.jsx'
 import Redirect from './components/Redirect.jsx'
-import Login from './pages/Login.jsx'
+import LoginRegister from './pages/LoginRegister.jsx'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Route path="/" Component={Main} />
       <Route path="/:shortUrl" Component={Redirect} />
       <Route path="/url/:id" Component={Url} />
-      <Route path="/user/login" Component={Login} />
+      <Route path="/user/:mode" Component={LoginRegister} />
     </Routes>
   )
 }
