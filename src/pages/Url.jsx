@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import UrlDataResult from '../components/UrlDataResult.jsx'
+import Logout from '../components/Logout.jsx'
 
 function Url() {
   const { id } = useParams();
@@ -67,6 +68,7 @@ function Url() {
   
   return (
     <>
+      <Logout />
       <h2>Showing request data for URL: {urlObject.shortenedUrl} -------- {decodeURIComponent(urlObject.originalUrl)}</h2>
       <button onClick={(e) => handleDeleteUrl(e, urlObject.id)}>Delete This URL</button>
       <table className="data-table">

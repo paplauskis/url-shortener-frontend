@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import UrlResult from '../components/UrlResult.jsx'
 import CreateUrl from '../components/CreateUrl.jsx'
 import { useNavigate } from 'react-router-dom'
+import Logout from '../components/Logout.jsx'
 
 function Main() {
   const [data, setData] = useState(null);
@@ -54,6 +55,7 @@ function Main() {
 
   return (
     <>
+      <Logout />
       {!formShow && <button onClick={() => setFormShow(true)}>Add New URL</button>}
       {formShow && <CreateUrl/>}
       <h2>Your URLs</h2>
